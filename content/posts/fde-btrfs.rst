@@ -244,7 +244,7 @@ These are be listed among other subvolumes:
    ID 562 gen 12995 top level 257 path var/lib/docker/btrfs/subvolumes/a1723918aa603a5c9d63bff2fc623ccbcc5ad1cbeb8c048929c65237ce61bebc
    ID 563 gen 12996 top level 257 path var/lib/docker/btrfs/subvolumes/e8eb5e7f51f415678c3126ca447e2df32d74fe041d0782bfb39357ae6cf28cec
    ID 581 gen 16882 top level 257 path var/lib/lxd/images/6cb0ba80a5fe32357568a473cbaf69f14d26da0ba6b08f5b1bcde7053fc73757.btrfs
-   
+
 
 
 .. _Btrfs: https://btrfs.wiki.kernel.org/

@@ -31,7 +31,7 @@ The ``setup.py`` file is the entry point for a Python project, so let's start
 from there.
 
 Aside from the usual boilerplate, the most importating thing here is to keep
-track of install and test (and possibily development) dependencies
+track of install and test (and possibly development) dependencies
 separately. It's quite common in projects to have an ``extra_require`` entry
 called ``"testing"``, so that test dependencies can be installed via
 
@@ -54,7 +54,7 @@ In the end the ``setup.py`` will look like this:
 
    config = {
        'name': 'myproject',
-       'version'': '0.0.1',
+       'version': '0.0.1',
        # ... description, author details, and other metadata
        'packages': find_packages(include=['myproject', 'myproject.*']),
        'install_requires': [...],  # ... runtime dependencies

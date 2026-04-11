@@ -1,0 +1,55 @@
+[project]
+name = "albertodonato"
+version = "0.0.1"
+requires-python = ">=3.13"
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+  "pelican",
+  "pelican-sitemap",
+]
+
+[dependency-groups]
+lint = [
+  "pre-commit",
+  "pyproject-fmt",
+]
+
+[tool.pyproject-fmt]
+expand_tables = [ "tool.tox" ]
+
+[tool.tox]
+requires = [ "tox>=4.6", "tox-uv>=1.0" ]
+no_package = true
+
+[tool.tox.env.generate]
+commands = [ [ "pelican", "content/", { replace = "posargs", default = [], extend = true } ] ]
+
+[tool.tox.env.lint]
+package = "skip"
+dependency_groups = [ "lint" ]
+commands = [ [ "pre-commit", "run", "--all-files" ] ]
+
+[tool.tox.env.publish]
+commands = [
+  [
+    "pelican",
+    "content/",
+    "--settings",
+    "publishconf.py",
+    { replace = "posargs", default = [], extend = true }
+  ]
+]
+
+[tool.tox.env.serve]
+commands = [
+  [ "pelican", "content/", "--autoreload", "--listen", { replace = "posargs", default = [], extend = true } ]
+]
+
+[tool.tox.env_run_base]
+runner = "uv-venv-lock-runner"
+package = "skip"
+commands = [ [ "pelican", "content/", { replace = "posargs", default = [], extend = true } ] ]

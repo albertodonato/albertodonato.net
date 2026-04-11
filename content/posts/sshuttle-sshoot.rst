@@ -65,7 +65,7 @@ define profiles, using the same command line options that would be passed to
 
 .. code:: console
 
-   $ sshoot create --remote=remote.example.com --auto-hosts vpn1 10.0.1.0/24 10.0.2.0/24 
+   $ sshoot create --remote=remote.example.com --auto-hosts vpn1 10.0.1.0/24 10.0.2.0/24
 
 and start/stop the connection using the profile name:
 
@@ -83,7 +83,7 @@ It's also possible to check which profiles are defined and connected
   $ sshoot list
      Profile  Remote host          Subnets
   ----------------------------------------------------------
-   * vpn1     remote.example.com   10.0.1.0/24 10.0.2.0/24  
+   * vpn1     remote.example.com   10.0.1.0/24 10.0.2.0/24
      vpn2     remote2.example.com  192.168.9.0/24
 
 In this case, the first profile is currently connected.

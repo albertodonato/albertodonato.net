@@ -18,7 +18,7 @@ a quick and simple solution that would allow me to install everything with a
 single command.
 
 But wouldn't it be nice to also have an automatic way to keep this list in sync
-across mulitple machines and be able to also remove packages if they become
+across multiple machines and be able to also remove packages if they become
 unneeded?
 
 To do that, `metapackages` are the perfect tool. They're just empty packages
@@ -159,7 +159,7 @@ The repository is now ready to be used.
 
 To make it available to all the machines, you can put host the ``ubuntu/`` tree
 on on a machine running a web server, but if you already sync your files using
-a sevice like Dropbox or OwnCloud, an easy solution is to just have the tree
+a service like Dropbox or OwnCloud, an easy solution is to just have the tree
 synced by it. Since metapackages have no real content, they're very small.
 
 All you need is to create a repository entry

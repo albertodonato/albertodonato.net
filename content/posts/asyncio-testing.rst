@@ -30,15 +30,15 @@ result of the asynchronous call. For example:
   # Twisted
   def test_async_call(self):
       deferred = call_under_test()
-  
+
       def check(result):
           self.assertEqual(result, 19)
-  
+
       return deferred.addCallback(check)
 
 will run the ``check`` callback when the deferred yields a result.
 The same can be written more concisely using ``@inlineCallbacks``:
-      
+
 .. code:: python
 
   # Twisted
@@ -47,7 +47,7 @@ The same can be written more concisely using ``@inlineCallbacks``:
       result = yield call_under_test()
       self.assertEqual(result, 19)
 
-which comes especially handy when multiple asynchronous calls are unsed in a
+which comes especially handy when multiple asynchronous calls are unused in a
 single test (so you don't need to chain a lot of callbacks).
 
 While moving my code to asyncio, I wanted to keep the same unit test style, but
@@ -91,7 +91,7 @@ it's asynchronous:
       def wrapper():
           result = method()
           if iscoroutine(result) or isinstance(result, Future):
-             self.loop.run_until_complete(async(result, loop=self.loop))
+             self.loop.run_until_complete(ensure_future(result, loop=self.loop))
 
       return wrapper
 
@@ -140,7 +140,7 @@ To make this kind of test more concise, I enhanced the ``TestLoop`` used by
 The change is actually pretty simple:
 
 .. code:: python
-                
+
   def advance(self, advance):
       '''Advance the loop time and schedule a run.'''
       assert advance >= 0, 'Time advance must not be negative'
