@@ -16,7 +16,14 @@ dependencies = [
 lint = [
   "pre-commit",
   "pyproject-fmt",
+  "ruff",
 ]
+
+[tool.ruff]
+line-length = 79
+lint.select = [ "F", "I", "RUF", "UP" ]
+lint.isort.combine-as-imports = true
+lint.isort.force-sort-within-sections = true
 
 [tool.pyproject-fmt]
 expand_tables = [ "tool.tox" ]

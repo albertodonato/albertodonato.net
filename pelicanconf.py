@@ -51,13 +51,12 @@ DIRECT_TEMPLATES = ("index", "categories", "tags", "authors", "archives")
 USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = "misc"
 
-extra_paths = [path.relative_to("content") for path in Path("content/extra").iterdir()]
+extra_paths = [
+    path.relative_to("content") for path in Path("content/extra").iterdir()
+]
 
 STATIC_PATHS = ["images", "files", *extra_paths]
-EXTRA_PATH_METADATA = {
-    str(path): {"path": path.name}
-    for path in extra_paths
-}
+EXTRA_PATH_METADATA = {str(path): {"path": path.name} for path in extra_paths}
 
 THEME = "../pelican-chemistry"
 
@@ -84,7 +83,11 @@ INDEXES_ON_MENU = True
 SITEMAP = {
     "format": "xml",
     "priorities": {"articles": 0.5, "indexes": 0.5, "pages": 0.5},
-    "changefreqs": {"articles": "monthly", "indexes": "daily", "pages": "monthly"},
+    "changefreqs": {
+        "articles": "monthly",
+        "indexes": "daily",
+        "pages": "monthly",
+    },
 }
 
 #

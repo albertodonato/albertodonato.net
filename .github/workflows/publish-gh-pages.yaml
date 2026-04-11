@@ -34,7 +34,7 @@ jobs:
 
       - name: Build static files
         run: |
-          tox run -e publish -- -t theme
+          tox run -e publish
 
       - name: Upload static files as artifact
         id: deployment

@@ -1,4 +1,13 @@
+exclude: ^theme/
+
 repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.7
+    hooks:
+      - id: ruff-check
+        args: [ --fix ]
+      - id: ruff-format
+
   - repo: https://github.com/tox-dev/pyproject-fmt
     rev: v2.20.0
     hooks:
@@ -18,5 +27,6 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-toml
+      - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
