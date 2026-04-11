@@ -58,7 +58,7 @@ extra_paths = [
 STATIC_PATHS = ["images", "files", *extra_paths]
 EXTRA_PATH_METADATA = {str(path): {"path": path.name} for path in extra_paths}
 
-THEME = "../pelican-chemistry"
+THEME = "./theme"
 
 PLUGINS = ["sitemap"]
 
