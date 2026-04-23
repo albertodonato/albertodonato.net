@@ -1,0 +1,10 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'index.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Articles with the {{ tag }} tag
+{%- endblock %}
+
+{% block content_hint %}
+  <h1 class="content-hint">Articles with the "{{ tag }}" tag</h1>
+{% endblock %}

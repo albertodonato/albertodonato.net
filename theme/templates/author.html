@@ -1,0 +1,10 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'index.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Articles by {{ author }}
+{%- endblock %}
+
+{% block content_hint %}
+  <h1 class="content-hint">Articles by {{ author }}</h1>
+{% endblock %}

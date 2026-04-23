@@ -1,0 +1,19 @@
+{# -*- mode: jinja2 -*- #}
+{% if DEFAULT_PAGINATION %}
+<div>{{ articles_page }}</div>
+  <nav class="hidden-print">
+    <ul class="pager">
+      {% if articles_page.has_previous() %}
+        <li class="previous">
+          <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">Prev</a>
+        </li>
+      {% endif %}
+
+      {% if articles_page.has_next() %}
+        <li class="next">
+          <a href="{{ SITEURL }}/{{ articles_next_page.url }}">Next</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

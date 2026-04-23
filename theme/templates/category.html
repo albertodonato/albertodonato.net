@@ -1,0 +1,10 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'index.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Articles in the {{ category }} category
+{%- endblock %}
+
+{% block content_hint %}
+  <h1 class="content-hint">Articles in the "{{ category }}" category</h1>
+{% endblock %}

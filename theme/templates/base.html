@@ -1,0 +1,46 @@
+{# -*- mode: jinja2 -*- #}
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+  <head>
+    {% block head %}
+      <title>{% block title %}{{ SITENAME }}{% endblock title %}</title> 
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <meta property="og:site_name" content="{{ SITENAME }}">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="{{ SITEURL }}/{{ output_file }}">
+      <meta property="og:title" content="{{ self.title() }}">
+      <meta property="og:description" content="{{ description }}"> 
+      <meta property="og:locale" content="{{ DEFAULT_LANG }}">
+
+      <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}">
+      {% if FAVICON_URL %}
+        <link rel="icon" href="{{ FAVICON_URL }}">
+      {% endif %}
+      {% if MASTODON_LINK %}
+        <link rel="me" href="{{ MASTODON_LINK }}">
+      {% endif %}
+      {% include 'include/rss.html' %}
+      {% include 'include/css.html' %}
+      {% include 'include/js.html' %}
+      {% include 'include/google_analytics.html' %}
+    {% endblock %}
+  </head>
+  
+  <body>
+    <div id="wrap">
+      {% include 'include/header.html' %}
+      <main>
+        <div class="container">
+          {% block content_hint %}{% endblock %}
+          {% block content %}{% endblock %}
+        </div>
+      </main>
+      <div id="push"></div>
+    </div>
+    {% include 'include/footer.html' %}
+  </body>
+</html>
