@@ -4,52 +4,59 @@
 {% block head %}
   {{ super() }}
   <meta name="author" content="{{ AUTHOR }}">
-  <meta name="description" content="{{ META_DESCRIPTION | striptags }}">
+  <meta name="description" content="{{ META_DESCRIPTION | default(SITENAME) | striptags }}">
+{% endblock %}
+
+{% block content_hint %}
+  <header class="b-theme mb-8 pb-6 border-b">
+    <h2 class="c-text text-2xl font-bold">Recent Posts</h2>
+  </header>
 {% endblock %}
 
 {% block content %}
-  {% for article in articles_page.object_list %}
-    <article class="post-summary">
-      <h1 class="post-title">
-        <a href="{{ SITEURL }}/{{ article.url }}" title="Permalink to {{ article.title | striptags }}">{{ article.title }}</a>
-      </h1>
-      <div class="post-details">
-        <ul class="list-inline list-separated list-separated-dot">
-          <li class="post-date">
-            <time>{{ article.locale_date }}</time>
-          </li>
-          <li class="post-category">
-            <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-          </li>
-          {% if article.tags %}
-            <li class="post-tags">
-              {% for tag in article.tags | sort %}
-              <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
-              {% endfor %}
-            </li>
-          {% endif %}
-          {% if article.author and SHOW_ARTICLE_AUTHOR %}
-            <li>
-              <address>
-                By <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
-              </address>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
-      <div class="post-content">
-        {{ article.summary }}
-      </div>
-
-      <nav class="hidden-print">
-        <div class="nav-links">
-          <a href="{{ SITEURL }}/{{ article.url }}" title="Full article">
-            Read more
-          </a>
+  <div class="space-y-10">
+    {% for article in articles_page.object_list %}
+      {% if not loop.first %}
+        <hr class="b-theme" />
+      {% endif %}
+      <article>
+        <header class="mb-3">
+          <div class="c-muted flex flex-wrap items-center gap-x-6 gap-y-1.5 mb-2 text-sm">
+            <a href="{{ SITEURL }}/{{ article.category.url }}" class="c-accent inline-flex items-center gap-1 font-medium no-underline hover:underline">
+              <i class="fa-solid fa-folder-open fa-xs" aria-hidden="true"></i>
+              {{ article.category }}
+            </a>
+            <span class="flex items-center gap-1">
+              <i class="fa-regular fa-calendar fa-xs" aria-hidden="true"></i>
+              <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
+            </span>
+          </div>
+          <h3 class="text-2xl font-semibold leading-snug">
+            <a href="{{ SITEURL }}/{{ article.url }}" class="c-text no-underline hover:underline" title="Permalink to {{ article.title | striptags }}">
+              {{ article.title }}
+            </a>
+          </h3>
+        </header>
+        <div class="c-muted text-base leading-relaxed">
+          {{ article.summary }}
         </div>
-      </nav>
-    </article>
-  {% endfor %}
+        <footer class="mt-4 flex flex-wrap items-center gap-x-8 gap-y-2">
+          <a href="{{ SITEURL }}/{{ article.url }}" class="c-accent inline-flex items-center gap-1.5 text-sm font-medium no-underline hover:underline">
+            Read more <i class="fa-solid fa-arrow-right fa-xs" aria-hidden="true"></i>
+          </a>
+          {% if article.tags %}
+            <div class="flex flex-wrap gap-1.5">
+              {% for tag in article.tags | sort %}
+                <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip">
+                  <i class="fa-solid fa-tag fa-xs" aria-hidden="true"></i>{{ tag }}
+                </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </footer>
+      </article>
+    {% endfor %}
+  </div>
 
   {% if articles_page.has_other_pages() %}
     {% include 'include/pagination.html' %}

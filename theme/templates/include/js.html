@@ -1,3 +1,14 @@
 {# -*- mode: jinja2 -*- #}
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/jquery-3.7.1.min.js"></script>
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ["Roboto", "system-ui", "sans-serif"],
+          mono: ['"Roboto Mono"', "monospace"],
+        },
+      },
+    },
+  };
+</script>

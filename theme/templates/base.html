@@ -3,25 +3,23 @@
 <html lang="{{ DEFAULT_LANG }}">
   <head>
     {% block head %}
-      <title>{% block title %}{{ SITENAME }}{% endblock title %}</title> 
-
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 
       <meta property="og:site_name" content="{{ SITENAME }}">
       <meta property="og:type" content="website">
       <meta property="og:url" content="{{ SITEURL }}/{{ output_file }}">
       <meta property="og:title" content="{{ self.title() }}">
-      <meta property="og:description" content="{{ description }}"> 
+      <meta property="og:description" content="{{ description }}">
       <meta property="og:locale" content="{{ DEFAULT_LANG }}">
 
       <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}">
       {% if FAVICON_URL %}
         <link rel="icon" href="{{ FAVICON_URL }}">
       {% endif %}
-      {% if MASTODON_LINK %}
-        <link rel="me" href="{{ MASTODON_LINK }}">
+      {% if MASTODON_VERIFICATION_LINK %}
+        <link rel="me" href="{{ MASTODON_VERIFICATION_LINK }}">
       {% endif %}
       {% include 'include/rss.html' %}
       {% include 'include/css.html' %}
@@ -29,18 +27,22 @@
       {% include 'include/google_analytics.html' %}
     {% endblock %}
   </head>
-  
-  <body>
-    <div id="wrap">
+
+  <body class="flex flex-col min-h-screen">
+    <div class="flex flex-col lg:flex-row flex-1">
       {% include 'include/header.html' %}
-      <main>
-        <div class="container">
+
+      <main class="flex-1 min-w-0">
+        {% include 'include/section_nav.html' %}
+
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-8 lg:py-10">
           {% block content_hint %}{% endblock %}
           {% block content %}{% endblock %}
         </div>
       </main>
-      <div id="push"></div>
     </div>
+
     {% include 'include/footer.html' %}
+    {% include 'include/js_body.html' %}
   </body>
 </html>

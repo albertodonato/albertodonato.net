@@ -6,12 +6,16 @@
 {%- endblock %}
 
 {% block content %}
-  <h1>Archives for {{ period | reverse | join(' ') }}</h1>
+  <header class="b-theme mb-8 pb-6 border-b">
+    <h2 class="c-text text-2xl font-bold">Archives for {{ period | reverse | join(' ') }}</h2>
+  </header>
 
-  <dl class="list-index">
+  <dl class="space-y-3">
     {% for article in dates %}
-      <dt>{{ article.locale_date }}</dt>
-      <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+      <div class="flex gap-4 items-baseline">
+        <dt class="c-muted text-sm shrink-0">{{ article.locale_date }}</dt>
+        <dd><a href="{{ SITEURL }}/{{ article.url }}" class="c-text no-underline hover:underline">{{ article.title }}</a></dd>
+      </div>
     {% endfor %}
   </dl>
 {% endblock %}

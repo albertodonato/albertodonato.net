@@ -63,21 +63,6 @@ THEME = "./theme"
 PLUGINS = ["sitemap"]
 
 #
-# theme-specific settings
-#
-
-# Export pelican version to theme
-PELICAN_VERSION = pelican.__version__
-
-LICENSE_NAME = "CC BY-SA 4.0"
-LICENSE_URL = "https://creativecommons.org/licenses/by-sa/4.0/"
-
-MASTODON_LINK = "https://hachyderm.io/@ack"
-
-PAGES_ON_MENU = True
-INDEXES_ON_MENU = True
-
-#
 # plugin: sitemap
 #
 SITEMAP = {
@@ -93,5 +78,10 @@ SITEMAP = {
 #
 # theme-specific settings
 #
+
+LICENSE_NAME = "CC BY-SA 4.0"
+LICENSE_URL = "https://creativecommons.org/licenses/by-sa/4.0/"
+
+MASTODON_VERIFICATION_LINK = "https://hachyderm.io/@ack"
 
 FAVICON_URL = "/favicon.png"

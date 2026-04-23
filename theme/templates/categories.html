@@ -6,15 +6,17 @@
 {%- endblock %}
 
 {% block content %}
-  <h1>Categories</h1>
+  <header class="b-theme mb-8 pb-6 border-b">
+    <h2 class="c-text text-2xl font-bold">Categories</h2>
+  </header>
 
-  <ul class="list-unstyled list-index list-count">
+  <ul class="space-y-2">
     {% for category, articles in categories | sort %}
-      <li>
-        <a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
-        <span class="count">
-          <span class="badge">{{ articles | count }}</span>
-        </span>
+      <li class="flex items-center gap-3">
+        <a href="{{ SITEURL }}/{{ category.url }}" class="c-accent no-underline hover:underline font-medium">
+          <i class="fa-solid fa-folder-open fa-xs mr-1" aria-hidden="true"></i>{{ category }}
+        </a>
+        <span class="c-muted text-sm">({{ articles | count }})</span>
       </li>
     {% endfor %}
   </ul>

@@ -2,9 +2,13 @@
 {% extends 'index.html' %}
 
 {% block title -%}
-  {{ SITENAME }} &mdash; Articles in the {{ category }} category
+  {{ SITENAME }} &mdash; Articles in "{{ category }}"
 {%- endblock %}
 
 {% block content_hint %}
-  <h1 class="content-hint">Articles in the "{{ category }}" category</h1>
+  <header class="b-theme mb-8 pb-6 border-b">
+    <h2 class="c-text text-2xl font-bold">
+      <i class="fa-solid fa-folder-open fa-sm mr-2" aria-hidden="true"></i>{{ category }}
+    </h2>
+  </header>
 {% endblock %}

@@ -2,9 +2,13 @@
 {% extends 'index.html' %}
 
 {% block title -%}
-  {{ SITENAME }} &mdash; Articles with the {{ tag }} tag
+  {{ SITENAME }} &mdash; Articles tagged "{{ tag }}"
 {%- endblock %}
 
 {% block content_hint %}
-  <h1 class="content-hint">Articles with the "{{ tag }}" tag</h1>
+  <header class="b-theme mb-8 pb-6 border-b">
+    <h2 class="c-text text-2xl font-bold">
+      <i class="fa-solid fa-tag fa-sm mr-2" aria-hidden="true"></i>{{ tag }}
+    </h2>
+  </header>
 {% endblock %}

@@ -9,7 +9,6 @@
   {% if page.summary %}
     <meta name="description" content="{{ page.summary | striptags }}">
   {% endif %}
-  <meta name="tags" contents="{% for tag in page.tags %}{{ tag }}, {% endfor %}">
 {% endblock %}
 
 {% block title -%}
@@ -18,8 +17,10 @@
 
 {% block content %}
   <article>
-    <h1 class="title">{{ page.title }}</h1>
-    <div class="content">
+    <header class="mb-6 pb-6 border-b b-theme">
+      <h1 class="c-text text-3xl font-bold leading-tight">{{ page.title }}</h1>
+    </header>
+    <div class="prose c-text">
       {{ page.content }}
     </div>
   </article>

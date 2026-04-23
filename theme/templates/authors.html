@@ -6,14 +6,16 @@
 {%- endblock %}
 
 {% block content %}
-<h1>Authors</h1>
+  <header class="b-theme mb-8 pb-6 border-b">
+    <h2 class="c-text text-2xl font-bold">Authors</h2>
+  </header>
 
-<ul class="list-unstyled list-index">
-  {% for author, articles in authors | sort %}
-  <li>
-    <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-    <span class="badge">{{ articles | count }}</span>
-  </li>
-  {% endfor %}
-</ul>
+  <ul class="space-y-2">
+    {% for author, articles in authors | sort %}
+      <li class="flex items-center gap-3">
+        <a href="{{ SITEURL }}/{{ author.url }}" class="c-accent no-underline hover:underline font-medium">{{ author }}</a>
+        <span class="c-muted text-sm">({{ articles | count }})</span>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}

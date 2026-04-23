@@ -1,55 +1,58 @@
 {# -*- mode: jinja2 -*- #}
-<header>
-  <nav class="navbar navbar-fixed-top hidden-print">
-    <div class="container">
+<aside id="sidebar" class="w-full lg:w-80 xl:w-96 shrink-0 border-b lg:border-b-0 lg:border-r">
+  <div class="p-6 flex flex-col gap-6 lg:sticky lg:top-0 lg:max-h-screen lg:overflow-y-auto">
 
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false">
-          <span class="fas fa-bars navbar-toggle-content"></span>
-        </button>
-        <a class="navbar-brand" href="{{ SITEURL }}">{{ SITENAME }}</a>
+    <!-- Profile -->
+    <div class="flex flex-col items-center text-center gap-3 pt-2">
+      <div class="avatar w-24 h-24 rounded-full flex items-center justify-center text-white text-2xl font-bold select-none">
+        {{ AUTHOR.split()[0][0] }}{% if AUTHOR.split()|length > 1 %}{{ AUTHOR.split()[-1][0] }}{% endif %}
       </div>
-
-      <div id="navbar-menu" class="collapse navbar-collapse">
-        {% if PAGES_ON_MENU and pages %}
-          <ul class="nav navbar-nav">
-            {% for page in pages | sort(attribute='index') %}
-              <li><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-
-        {% if LINKS %}
-          <ul class="nav navbar-nav">
-            {% for title, link in LINKS %}
-              <li><a href="{{ link }}">{{ title }}</a></li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-
-        <ul class="nav navbar-nav navbar-right">
-          {% if INDEXES_ON_MENU %}
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="visible-xs-inline">Indexes</span>
-                <span class="fas fa-bars hidden-xs" aria-hidden="true"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="{{ SITEURL }}/{{ CATEGORIES_URL }}">Categories</a></li>
-                <li><a href="{{ SITEURL }}/{{ TAGS_URL }}">Tags</a></li>
-                <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
-                {% if FEED_ALL_ATOM or FEED_ALL_RSS %}
-                  <li>
-                    <a href="{{ SITEURL }}/{% if FEED_ALL_ATOM %}{{ FEED_ALL_ATOM }}{% else %}{{ FEED_ALL_RSS }}{% endif %}">
-                      <span class="fas fa-rss"></span>
-                    </a>
-                  </li>
-                {% endif %}
-              </ul>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
+      <h1 class="c-text font-bold text-2xl leading-tight">{{ AUTHOR }}</h1>
+      {% if SITE_DESCRIPTION %}
+        <p class="c-muted text-sm leading-relaxed mt-4">{{ SITE_DESCRIPTION }}</p>
+      {% endif %}
     </div>
-  </nav>
-</header>
+
+    {% if SOCIAL %}
+      <!-- Social icons -->
+      <div class="social-icons flex justify-center gap-4 text-2xl">
+        {% for name, link in SOCIAL %}
+          <a href="{{ link }}" target="_blank" rel="noopener noreferrer{% if 'mastodon' in name %} me{% endif %}" aria-label="{{ name | title }}" class="hover:opacity-70 transition-opacity">
+            <i class="fa-brands fa-{{ name }}" aria-hidden="true"></i>
+          </a>
+        {% endfor %}
+        {% if EMAIL %}
+          <a href="mailto:{{ EMAIL }}" aria-label="Email" class="hover:opacity-70 transition-opacity">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
+        {% endif %}
+      </div>
+
+      <hr class="b-theme" />
+    {% endif %}
+
+    <!-- Navigation -->
+    <nav aria-label="Main navigation">
+      <ul class="list-none p-0 m-0 flex flex-row flex-wrap justify-center gap-1 lg:flex-col lg:items-stretch lg:gap-0.5">
+        <li>
+          <a href="{{ SITEURL }}/" class="nav-link">Home</a>
+        </li>
+        {% if pages %}
+          {% for page in pages | sort(attribute='index') %}
+            <li>
+              <a href="{{ SITEURL }}/{{ page.url }}" class="nav-link{% if output_file == page.url %} active{% endif %}"{% if output_file == page.url %} aria-current="page"{% endif %}>{{ page.title }}</a>
+            </li>
+          {% endfor %}
+        {% endif %}
+        {% if LINKS %}
+          {% for title, link in LINKS %}
+            <li>
+              <a href="{{ link }}" class="nav-link">{{ title }}</a>
+            </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </nav>
+
+  </div>
+</aside>

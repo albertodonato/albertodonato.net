@@ -9,7 +9,7 @@
   {% if article.summary %}
     <meta name="description" content="{{ article.summary | striptags }}">
   {% endif %}
-  <meta name="tags" contents="{% for tag in article.tags %}{{ tag }}, {% endfor %}">
+  <meta name="tags" content="{% for tag in article.tags %}{{ tag }}, {% endfor %}">
 {% endblock %}
 
 {% block title -%}
@@ -18,34 +18,34 @@
 
 {% block content %}
   <article class="{{ article.status }}">
-    <h1 class="post-title">
-      <a href="{{ SITEURL }}/{{ article.url }}" title="Permalink to {{ article.title | striptags }}">{{ article.title }}</a>
-    </h1>
-    <div class="post-details">
-      <ul class="list-inline list-separated list-separated-dot">
-        <li class="post-date">
-          <time>{{ article.locale_date }}</time>
-        </li>
-        <li class="post-category">
-          <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-        </li>
-        {% if article.tags %}
-          <li class="post-tags">
-            {% for tag in article.tags | sort %}
-              <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
-            {% endfor %}
-          </li>
-        {% endif %}
+    <header class="mb-6 pb-6 border-b b-theme">
+      <div class="c-muted flex flex-wrap items-center gap-x-6 gap-y-1.5 mb-3 text-sm">
+        <a href="{{ SITEURL }}/{{ article.category.url }}" class="c-accent inline-flex items-center gap-1 font-medium no-underline hover:underline">
+          <i class="fa-solid fa-folder-open fa-xs" aria-hidden="true"></i>
+          {{ article.category }}
+        </a>
+        <span class="flex items-center gap-1">
+          <i class="fa-regular fa-calendar fa-xs" aria-hidden="true"></i>
+          <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
+        </span>
         {% if article.author and SHOW_ARTICLE_AUTHOR %}
-          <li>
-            <address>
-              By <a href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
-            </address>
-          </li>
+          <span class="flex items-center gap-1">
+            By <a href="{{ SITEURL }}/{{ article.author.url }}" class="c-accent no-underline hover:underline ml-1">{{ article.author }}</a>
+          </span>
         {% endif %}
-      </ul>
-    </div>
-    <div class="post-content">
+      </div>
+      <h1 class="c-text text-3xl font-bold leading-tight">{{ article.title }}</h1>
+      {% if article.tags %}
+        <div class="flex flex-wrap gap-1.5 mt-4">
+          {% for tag in article.tags | sort %}
+            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip">
+              <i class="fa-solid fa-tag fa-xs" aria-hidden="true"></i>{{ tag }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </header>
+    <div class="prose c-text">
       {{ article.content }}
     </div>
   </article>

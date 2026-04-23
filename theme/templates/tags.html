@@ -6,16 +6,16 @@
 {%- endblock %}
 
 {% block content %}
-  <h1>Tags</h1>
+  <header class="b-theme mb-8 pb-6 border-b">
+    <h2 class="c-text text-2xl font-bold">Tags</h2>
+  </header>
 
-  <ul class="list-unstyled list-index list-count">
+  <div class="flex flex-wrap gap-2">
     {% for tag, articles in tags | sort %}
-      <li>
-        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-        <span class="count">
-          <span class="badge">{{ articles | count }}</span>
-        </span>
-      </li>
+      <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip">
+        <i class="fa-solid fa-tag fa-xs" aria-hidden="true"></i>{{ tag }}
+        <span class="ml-1 text-xs opacity-70">({{ articles | count }})</span>
+      </a>
     {% endfor %}
-  </ul>
+  </div>
 {% endblock %}

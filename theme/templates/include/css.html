@@ -1,10 +1,9 @@
 {# -*- mode: jinja2 -*- #}
-{# Roboto+Mono + Roboto | 300,400,400i,500,500i #}
-<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/fonts.css">
-<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/bootstrap-3.4.1-dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/fontawesome-free-6.7.2-web/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments.min.css">
-<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/style.css" />
 {% if CUSTOM_CSS %}
-  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ CUSTOM_CSS }}">
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ CUSTOM_CSS }}" />
 {% endif %}

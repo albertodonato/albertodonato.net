@@ -1,0 +1,33 @@
+{# -*- mode: jinja2 -*- #}
+<nav class="section-nav sticky top-0 z-10 border-b px-4 sm:px-6 lg:px-8 xl:px-10" aria-label="Section navigation">
+  <div class="max-w-3xl mx-auto flex items-center gap-1">
+    {% if ARCHIVES_URL %}
+      <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}" class="section-nav-link">
+        <i class="fa-solid fa-box-archive fa-xs" aria-hidden="true"></i>Archives
+      </a>
+    {% endif %}
+    {% if TAGS_URL %}
+      <a href="{{ SITEURL }}/{{ TAGS_URL }}" class="section-nav-link">
+        <i class="fa-solid fa-tags fa-xs" aria-hidden="true"></i>Tags
+      </a>
+    {% endif %}
+    {% if FEED_ALL_ATOM or FEED_ALL_RSS %}
+      <a href="{{ SITEURL }}/{% if FEED_ALL_ATOM %}{{ FEED_ALL_ATOM }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" class="section-nav-link">
+        <i class="fa-solid fa-rss fa-xs" aria-hidden="true"></i>RSS
+      </a>
+    {% endif %}
+    <div class="ml-auto py-2">
+      <div class="theme-picker flex" id="theme-picker" role="group" aria-label="Color theme">
+        <button class="theme-option" data-theme-value="auto" aria-label="Theme: system default">
+          <i class="fa-solid fa-circle-half-stroke fa-sm" aria-hidden="true"></i>
+        </button>
+        <button class="theme-option" data-theme-value="light" aria-label="Theme: light">
+          <i class="fa-solid fa-sun fa-sm" aria-hidden="true"></i>
+        </button>
+        <button class="theme-option" data-theme-value="dark" aria-label="Theme: dark">
+          <i class="fa-solid fa-moon fa-sm" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
