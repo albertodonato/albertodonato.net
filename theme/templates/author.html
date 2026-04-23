@@ -1,0 +1,11 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'index.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Articles by {{ author }}
+{%- endblock %}
+
+{% block content_hint %}
+  {% set header_title = 'Articles by ' ~ author %}
+  {% include 'include/page_header.html' %}
+{% endblock %}

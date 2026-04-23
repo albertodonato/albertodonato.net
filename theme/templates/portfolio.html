@@ -1,0 +1,58 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block head %}
+  {{ super() }}
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="description" content="{{ META_DESCRIPTION | default(SITENAME) | striptags }}">
+{% endblock %}
+
+{% block body_content %}
+<nav class="section-nav" aria-label="Navigation">
+  <div class="nav-inner">
+    <div class="nav-end">
+      {% include 'include/theme_selector.html' %}
+    </div>
+  </div>
+</nav>
+<div class="portfolio">
+  <div class="portfolio-content">
+    {% if AVATAR_URL %}
+      <img src="{{ AVATAR_URL }}" alt="{{ AUTHOR }}" class="portfolio-avatar">
+    {% else %}
+      <div class="avatar">
+        {{ AUTHOR.split()[0][0] }}{% if AUTHOR.split()|length > 1 %}{{ AUTHOR.split()[-1][0] }}{% endif %}
+      </div>
+    {% endif %}
+    <h1 class="c-text portfolio-name">{{ AUTHOR }}</h1>
+    {% if page and page.content %}
+      <div class="c-muted portfolio-bio">{{ page.content }}</div>
+    {% endif %}
+  </div>
+
+  {% if LINKS %}
+    <div class="portfolio-links">
+      {% for name, link in LINKS %}
+        <a href="{{ SITEURL }}/{{ link }}" class="c-accent">{{ name }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if SOCIAL %}
+    <div class="social-icons">
+      {% for name, link in SOCIAL %}
+        <a href="{{ link }}" target="_blank" rel="noopener noreferrer{% if 'mastodon' in name %} me{% endif %}" aria-label="{{ name | title }}">
+          <i class="fa-brands fa-{{ name }}" aria-hidden="true"></i>
+        </a>
+      {% endfor %}
+      {% if EMAIL %}
+        <a href="mailto:{{ EMAIL }}" aria-label="Email">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+{% endblock body_content %}
+
+{% block footer %}{% endblock footer %}

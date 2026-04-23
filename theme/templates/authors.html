@@ -1,0 +1,20 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Authors
+{%- endblock %}
+
+{% block content %}
+  {% set header_title = 'Authors' %}
+  {% include 'include/page_header.html' %}
+
+  <ul class="item-list">
+    {% for author, articles in authors | sort %}
+      <li>
+        <a href="{{ SITEURL }}/{{ author.url }}" class="c-accent">{{ author }}</a>
+        <span class="c-muted item-count">({{ articles | count }})</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

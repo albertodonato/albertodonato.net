@@ -1,0 +1,49 @@
+{# -*- mode: jinja2 -*- #}
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+  <head>
+    {% block head %}
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script>(function(){var t=localStorage.getItem("theme");if(t&&t!=="auto")document.documentElement.setAttribute("data-theme",t);})();</script>
+      <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+
+      <meta property="og:site_name" content="{{ SITENAME }}">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="{{ SITEURL }}/{{ output_file | replace('index.html', '') | replace('.html', '') }}">
+      <meta property="og:title" content="{{ self.title() }}">
+      <meta property="og:description" content="{{ description }}">
+      <meta property="og:locale" content="{{ DEFAULT_LANG }}">
+
+      <link rel="canonical" href="{{ SITEURL }}/{{ output_file | replace('index.html', '') | replace('.html', '') }}">
+      {% if FAVICON_URL %}
+        <link rel="icon" href="{{ FAVICON_URL }}">
+      {% endif %}
+      {% if MASTODON_VERIFICATION_LINK %}
+        <link rel="me" href="{{ MASTODON_VERIFICATION_LINK }}">
+      {% endif %}
+      {% include 'include/rss.html' %}
+      {% include 'include/css.html' %}
+      {% include 'include/js.html' %}
+      {% include 'include/simple_analytics.html' %}
+    {% endblock %}
+  </head>
+
+  <body>
+    {% block body_content %}
+    <div class="page-body">
+      <main>
+        {% include 'include/section_nav.html' %}
+
+        <div class="content-container">
+          {% block content_hint %}{% endblock %}
+          {% block content %}{% endblock %}
+        </div>
+      </main>
+    </div>
+    {% endblock %}
+
+    {% block footer %}{% include 'include/footer.html' %}{% endblock %}
+    {% include 'include/js_body.html' %}
+  </body>
+</html>

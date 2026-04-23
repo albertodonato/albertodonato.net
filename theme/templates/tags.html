@@ -1,0 +1,20 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Tags
+{%- endblock %}
+
+{% block content %}
+  {% set header_title = 'Tags' %}
+  {% include 'include/page_header.html' %}
+
+  <div class="tag-index">
+    {% for tag, articles in tags | sort %}
+      <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip">
+        <i class="fa-solid fa-tag fa-sm" aria-hidden="true"></i>{{ tag }}
+        <span class="tag-count">({{ articles | count }})</span>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

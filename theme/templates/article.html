@@ -1,0 +1,33 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block head %}
+  {{ super() }}
+  {% if article.author %}
+    <meta name="author" content="{{ article.author }}">
+  {% endif %}
+  {% if article.summary %}
+    <meta name="description" content="{{ article.summary | striptags }}">
+  {% endif %}
+  <meta name="tags" content="{% for tag in article.tags %}{{ tag }}, {% endfor %}">
+{% endblock %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; {{ article.title | striptags }}
+{%- endblock %}
+
+{% block content %}
+  <article class="{{ article.status }}">
+    <header class="article-header">
+      {% set show_author = true %}
+      {% include 'include/article_meta.html' %}
+      <h1 class="c-text article-title">{{ article.title }}</h1>
+      {% if article.tags %}
+        <div class="article-tags">{% include 'include/tag_list.html' %}</div>
+      {% endif %}
+    </header>
+    <div class="prose c-text">
+      {{ article.content }}
+    </div>
+  </article>
+{% endblock %}

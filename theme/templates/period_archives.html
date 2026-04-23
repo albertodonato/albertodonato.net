@@ -1,0 +1,12 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Archives for {{ period | reverse | join(' ') }}
+{%- endblock %}
+
+{% block content %}
+  {% set header_title = 'Archives for ' ~ (period | reverse | join(' ')) %}
+  {% include 'include/page_header.html' %}
+  {% include 'include/archive_list.html' %}
+{% endblock %}

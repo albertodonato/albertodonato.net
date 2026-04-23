@@ -1,0 +1,17 @@
+{# -*- mode: jinja2 -*- #}
+{# expects: article, show_author (optional, default false) #}
+<div class="article-meta c-muted">
+  <a href="{{ SITEURL }}/{{ article.category.url }}" class="c-accent">
+    <i class="fa-solid fa-folder-open fa-xs" aria-hidden="true"></i>
+    {{ article.category }}
+  </a>
+  <span class="meta-item">
+    <i class="fa-regular fa-calendar fa-xs" aria-hidden="true"></i>
+    <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
+  </span>
+  {% if show_author | default(false) and article.author and SHOW_ARTICLE_AUTHOR %}
+    <span class="meta-item">
+      By <a href="{{ SITEURL }}/{{ article.author.url }}" class="c-accent">{{ article.author }}</a>
+    </span>
+  {% endif %}
+</div>

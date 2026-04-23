@@ -14,4 +14,4 @@ FEED_DOMAIN = SITEURL
 # theme-specific settings
 #
 
-GOOGLE_ANALYTICS = "G-C9NP89895H"
+SIMPLE_ANALYTICS = True

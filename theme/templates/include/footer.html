@@ -1,0 +1,25 @@
+{# -*- mode: jinja2 -*- #}
+<footer>
+  <div class="footer-inner c-muted">
+    {% if SOCIAL %}
+      <div class="social-icons">
+        {% for name, link in SOCIAL %}
+          <a href="{{ link }}" target="_blank" rel="noopener noreferrer{% if 'mastodon' in name %} me{% endif %}" aria-label="{{ name | title }}">
+            <i class="fa-brands fa-{{ name }}" aria-hidden="true"></i>
+          </a>
+        {% endfor %}
+        {% if EMAIL %}
+          <a href="mailto:{{ EMAIL }}" aria-label="Email">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+    <span>
+      &copy; {% if now is defined %}{{ now.year }} {% endif %}<a href="{{ SITEURL }}">{{ AUTHOR }}</a>
+      {% if LICENSE_NAME %}
+        &mdash; <a href="{{ LICENSE_URL }}">{{ LICENSE_NAME }}</a> unless otherwise noted.
+      {% endif %}
+    </span>
+  </div>
+</footer>

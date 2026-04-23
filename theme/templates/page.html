@@ -1,0 +1,35 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block body_content %}
+<div class="page-body">
+  <main>
+    {% include 'include/pages_nav.html' %}
+
+    <div class="content-container">
+      <article>
+        <header class="article-header">
+          <h1 class="c-text article-title">{{ page.title }}</h1>
+        </header>
+        <div class="prose c-text">
+          {{ page.content }}
+        </div>
+      </article>
+    </div>
+  </main>
+</div>
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  {% if page.author %}
+    <meta name="author" content="{{ page.author }}">
+  {% endif %}
+  {% if page.summary %}
+    <meta name="description" content="{{ page.summary | striptags }}">
+  {% endif %}
+{% endblock %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; {{ page.title | striptags }}
+{%- endblock %}

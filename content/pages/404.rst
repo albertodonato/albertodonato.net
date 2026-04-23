@@ -3,6 +3,7 @@ Not Found
 =========
 
 :status: hidden
+:index: 0
 :save_as: 404.html
 
 The request page could not be found.

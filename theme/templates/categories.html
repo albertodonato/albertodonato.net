@@ -1,0 +1,22 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Categories
+{%- endblock %}
+
+{% block content %}
+  {% set header_title = 'Categories' %}
+  {% include 'include/page_header.html' %}
+
+  <ul class="item-list">
+    {% for category, articles in categories | sort %}
+      <li>
+        <a href="{{ SITEURL }}/{{ category.url }}" class="c-accent">
+          <i class="fa-solid fa-folder-open fa-xs" aria-hidden="true"></i>{{ category }}
+        </a>
+        <span class="c-muted item-count">({{ articles | count }})</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

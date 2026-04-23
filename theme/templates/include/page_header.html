@@ -1,0 +1,7 @@
+{# -*- mode: jinja2 -*- #}
+{# expects: header_title, header_icon (optional) #}
+<header class="page-header">
+  <h2 class="c-text">
+    {% if header_icon %}<i class="fa-solid fa-{{ header_icon }} fa-sm" aria-hidden="true"></i>{% endif %}{{ header_title }}
+  </h2>
+</header>

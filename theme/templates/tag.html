@@ -1,0 +1,12 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'index.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Articles tagged "{{ tag }}"
+{%- endblock %}
+
+{% block content_hint %}
+  {% set header_title = tag %}
+  {% set header_icon = 'tag' %}
+  {% include 'include/page_header.html' %}
+{% endblock %}

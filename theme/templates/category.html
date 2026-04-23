@@ -1,0 +1,12 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'index.html' %}
+
+{% block title -%}
+  {{ SITENAME }} &mdash; Articles in "{{ category }}"
+{%- endblock %}
+
+{% block content_hint %}
+  {% set header_title = category %}
+  {% set header_icon = 'folder-open' %}
+  {% include 'include/page_header.html' %}
+{% endblock %}

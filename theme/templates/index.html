@@ -1,0 +1,40 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block head %}
+  {{ super() }}
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="description" content="{{ META_DESCRIPTION | default(SITENAME) | striptags }}">
+{% endblock %}
+
+{% block content %}
+  <div class="article-list">
+    {% for article in articles_page.object_list %}
+      <article>
+        <header class="article-list-header">
+          {% include 'include/article_meta.html' %}
+          <h3 class="article-list-title">
+            <a href="{{ SITEURL }}/{{ article.url }}" class="c-text" title="Permalink to {{ article.title | striptags }}">
+              {{ article.title }}
+            </a>
+          </h3>
+        </header>
+        <div class="c-muted article-summary">
+          {{ article.summary }}
+        </div>
+        <footer class="article-footer">
+          <a href="{{ SITEURL }}/{{ article.url }}" class="c-accent read-more">
+            Read more <i class="fa-solid fa-arrow-right fa-xs" aria-hidden="true"></i>
+          </a>
+          {% if article.tags %}
+            {% include 'include/tag_list.html' %}
+          {% endif %}
+        </footer>
+      </article>
+    {% endfor %}
+  </div>
+
+  {% if articles_page.has_other_pages() %}
+    {% include 'include/pagination.html' %}
+  {% endif %}
+{% endblock %}
