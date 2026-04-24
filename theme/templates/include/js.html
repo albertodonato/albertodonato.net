@@ -1,5 +1,9 @@
 {# -*- mode: jinja2 -*- #}
 <script src="https://cdn.tailwindcss.com"></script>
+{% if SEARCH_ENABLED %}
+  <script src="https://files.stork-search.net/releases/v1.6.0/stork.js" defer></script>
+  <script>document.addEventListener("DOMContentLoaded", () => stork.register("sitesearch", "{{ SITEURL }}/search-index.st"));</script>
+{% endif %}
 <script>
   tailwind.config = {
     theme: {

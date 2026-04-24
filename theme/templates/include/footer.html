@@ -1,6 +1,20 @@
 {# -*- mode: jinja2 -*- #}
-<footer class="b-theme border-t py-5 px-4 sm:px-6">
-  <div class="c-muted flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
+<footer class="py-8 px-4 sm:px-6">
+  <div class="c-muted flex flex-col items-center gap-3 text-sm">
+    {% if SOCIAL %}
+      <div class="social-icons flex justify-center gap-8 text-2xl mb-4">
+        {% for name, link in SOCIAL %}
+          <a href="{{ link }}" target="_blank" rel="noopener noreferrer{% if 'mastodon' in name %} me{% endif %}" aria-label="{{ name | title }}" class="hover:opacity-70 transition-opacity">
+            <i class="fa-brands fa-{{ name }}" aria-hidden="true"></i>
+          </a>
+        {% endfor %}
+        {% if EMAIL %}
+          <a href="mailto:{{ EMAIL }}" aria-label="Email" class="hover:opacity-70 transition-opacity">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
     <span>
       &copy; {% if now is defined %}{{ now.year }} {% endif %}<a href="{{ SITEURL }}">{{ AUTHOR }}</a>
       {% if LICENSE_NAME %}

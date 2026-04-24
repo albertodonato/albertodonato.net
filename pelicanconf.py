@@ -1,6 +1,9 @@
+import logging
 from pathlib import Path
+from shutil import which
 
-import pelican
+logger = logging.getLogger(__name__)
+
 
 AUTHOR = "Alberto Donato"
 SITENAME = "Alberto Donato"
@@ -15,29 +18,34 @@ DEFAULT_PAGINATION = 5
 DEFAULT_DATE_FORMAT = "%Y-%m-%d"
 
 # URL formats
-ARTICLE_URL = "posts/{slug}"
-ARTICLE_SAVE_AS = "posts/{slug}.html"
-PAGE_URL = "{slug}"
-PAGE_SAVE_AS = "{slug}.html"
-TAGS_URL = "tags"
-TAGS_SAVE_AS = "tags.html"
-TAG_URL = "tag/{slug}"
-TAG_SAVE_AS = "tag/{slug}.html"
-CATEGORIES_URL = "categories"
-CATEGORIES_SAVE_AS = "categories.html"
-CATEGORY_URL = "category/{slug}"
-CATEGORY_SAVE_AS = "category/{slug}.html"
-ARCHIVES_URL = "archives"
-ARCHIVES_SAVE_AS = "archives/index.html"
-YEAR_ARCHIVE_URL = "archives/{date:%Y}/index"
-YEAR_ARCHIVE_SAVE_AS = "archives/{date:%Y}/index.html"
-MONTH_ARCHIVE_URL = "archives/{date:%Y}/{date:%m}/index"
-MONTH_ARCHIVE_SAVE_AS = "archives/{date:%Y}/{date:%m}/index.html"
-DAY_ARCHIVE_URL = "archives/{date:%Y}/{date:%m}/{date:%d}/index"
-DAY_ARCHIVE_SAVE_AS = "archives/{date:%Y}/{date:%m}/{date:%d}/index.html"
+ARTICLE_URL = "blog/posts/{slug}"
+ARTICLE_SAVE_AS = "blog/posts/{slug}.html"
+PAGE_URL = "blog/{slug}"
+PAGE_SAVE_AS = "blog/{slug}.html"
+INDEX_URL = "blog"
+INDEX_SAVE_AS = "blog/index.html"
+TAGS_URL = "blog/tags"
+TAGS_SAVE_AS = "blog/tags.html"
+TAG_URL = "blog/tag/{slug}"
+TAG_SAVE_AS = "blog/tag/{slug}.html"
+CATEGORIES_URL = "blog/categories"
+CATEGORIES_SAVE_AS = "blog/categories.html"
+CATEGORY_URL = "blog/category/{slug}"
+CATEGORY_SAVE_AS = "blog/category/{slug}.html"
+ARCHIVES_URL = "blog/archives"
+ARCHIVES_SAVE_AS = "blog/archives/index.html"
+YEAR_ARCHIVE_URL = "blog/archives/{date:%Y}/index"
+YEAR_ARCHIVE_SAVE_AS = "blog/archives/{date:%Y}/index.html"
+MONTH_ARCHIVE_URL = "blog/archives/{date:%Y}/{date:%m}/index"
+MONTH_ARCHIVE_SAVE_AS = "blog/archives/{date:%Y}/{date:%m}/index.html"
+DAY_ARCHIVE_URL = "blog/archives/{date:%Y}/{date:%m}/{date:%d}/index"
+DAY_ARCHIVE_SAVE_AS = "blog/archives/{date:%Y}/{date:%m}/{date:%d}/index.html"
 
 # Links section
-LINKS = ()
+LINKS = (
+    ("Blog", "blog"),
+    ("Projects", "blog/projects"),
+)
 
 # Social links
 SOCIAL = (
@@ -61,6 +69,11 @@ EXTRA_PATH_METADATA = {str(path): {"path": path.name} for path in extra_paths}
 THEME = "./theme"
 
 PLUGINS = ["sitemap"]
+SEARCH_ENABLED = bool(which("stork"))
+if SEARCH_ENABLED:
+    PLUGINS.append("search")
+else:
+    logger.warning("stork executable not found, not enabling search")
 
 #
 # plugin: sitemap
@@ -76,6 +89,11 @@ SITEMAP = {
 }
 
 #
+# plugin: pelican-search
+#
+STORK_INPUT_OPTIONS = {"url_prefix": SITEURL}
+
+#
 # theme-specific settings
 #
 
@@ -85,3 +103,4 @@ LICENSE_URL = "https://creativecommons.org/licenses/by-sa/4.0/"
 MASTODON_VERIFICATION_LINK = "https://hachyderm.io/@ack"
 
 FAVICON_URL = "/favicon.png"
+AVATAR_URL = "/avatar.jpg"

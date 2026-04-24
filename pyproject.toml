@@ -9,7 +9,9 @@ classifiers = [
 ]
 dependencies = [
   "pelican",
+  "pelican-search",
   "pelican-sitemap",
+  "pygments",
 ]
 
 [dependency-groups]

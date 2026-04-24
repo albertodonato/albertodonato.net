@@ -18,31 +18,12 @@
 
 {% block content %}
   <article class="{{ article.status }}">
-    <header class="mb-6 pb-6 border-b b-theme">
-      <div class="c-muted flex flex-wrap items-center gap-x-6 gap-y-1.5 mb-3 text-sm">
-        <a href="{{ SITEURL }}/{{ article.category.url }}" class="c-accent inline-flex items-center gap-1 font-medium no-underline hover:underline">
-          <i class="fa-solid fa-folder-open fa-xs" aria-hidden="true"></i>
-          {{ article.category }}
-        </a>
-        <span class="flex items-center gap-1">
-          <i class="fa-regular fa-calendar fa-xs" aria-hidden="true"></i>
-          <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
-        </span>
-        {% if article.author and SHOW_ARTICLE_AUTHOR %}
-          <span class="flex items-center gap-1">
-            By <a href="{{ SITEURL }}/{{ article.author.url }}" class="c-accent no-underline hover:underline ml-1">{{ article.author }}</a>
-          </span>
-        {% endif %}
-      </div>
-      <h1 class="c-text text-3xl font-bold leading-tight">{{ article.title }}</h1>
+    <header class="mb-6">
+      {% set show_author = true %}
+      {% include 'include/article_meta.html' %}
+      <h1 class="c-text text-4xl font-bold leading-tight">{{ article.title }}</h1>
       {% if article.tags %}
-        <div class="flex flex-wrap gap-1.5 mt-4">
-          {% for tag in article.tags | sort %}
-            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip">
-              <i class="fa-solid fa-tag fa-xs" aria-hidden="true"></i>{{ tag }}
-            </a>
-          {% endfor %}
-        </div>
+        <div class="mt-4">{% include 'include/tag_list.html' %}</div>
       {% endif %}
     </header>
     <div class="prose c-text">

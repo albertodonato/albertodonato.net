@@ -1,0 +1,10 @@
+{# -*- mode: jinja2 -*- #}
+{# expects: dates #}
+<dl class="space-y-3">
+  {% for article in dates %}
+    <div class="flex gap-4 items-baseline">
+      <dt class="c-muted text-sm shrink-0">{{ article.locale_date }}</dt>
+      <dd><a href="{{ SITEURL }}/{{ article.url }}" class="c-text no-underline hover:underline">{{ article.title }}</a></dd>
+    </div>
+  {% endfor %}
+</dl>

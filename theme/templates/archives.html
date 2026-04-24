@@ -6,16 +6,7 @@
 {%- endblock %}
 
 {% block content %}
-  <header class="b-theme mb-8 pb-6 border-b">
-    <h2 class="c-text text-2xl font-bold">Archives</h2>
-  </header>
-
-  <dl class="space-y-3">
-    {% for article in dates %}
-      <div class="flex gap-4 items-baseline">
-        <dt class="c-muted text-sm shrink-0">{{ article.locale_date }}</dt>
-        <dd><a href="{{ SITEURL }}/{{ article.url }}" class="c-text no-underline hover:underline">{{ article.title }}</a></dd>
-      </div>
-    {% endfor %}
-  </dl>
+  {% set header_title = 'Archives' %}
+  {% include 'include/page_header.html' %}
+  {% include 'include/archive_list.html' %}
 {% endblock %}

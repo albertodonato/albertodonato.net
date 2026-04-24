@@ -1,0 +1,9 @@
+{# -*- mode: jinja2 -*- #}
+{# expects: article #}
+<div class="flex flex-wrap gap-1.5">
+  {% for tag in article.tags | sort %}
+    <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip">
+      <i class="fa-solid fa-tag fa-xs" aria-hidden="true"></i>{{ tag }}
+    </a>
+  {% endfor %}
+</div>

@@ -1,0 +1,51 @@
+{# -*- mode: jinja2 -*- #}
+{% extends 'base.html' %}
+
+{% block head %}
+  {{ super() }}
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="description" content="{{ META_DESCRIPTION | default(SITENAME) | striptags }}">
+{% endblock %}
+
+{% block body_content %}
+<div class="flex flex-col flex-1 items-center justify-center px-4 py-16">
+  <div class="flex flex-col items-center text-center gap-3">
+    {% if AVATAR_URL %}
+      <img src="{{ AVATAR_URL }}" alt="{{ AUTHOR }}" class="w-24 h-24 rounded-full object-cover">
+    {% else %}
+      <div class="avatar w-24 h-24 rounded-full flex items-center justify-center text-white text-2xl font-bold select-none">
+        {{ AUTHOR.split()[0][0] }}{% if AUTHOR.split()|length > 1 %}{{ AUTHOR.split()[-1][0] }}{% endif %}
+      </div>
+    {% endif %}
+    <h1 class="c-text font-bold text-4xl leading-tight mt-4">{{ AUTHOR }}</h1>
+    {% if page and page.content %}
+      <div class="c-muted text-lg leading-relaxed mt-4 max-w-prose">{{ page.content }}</div>
+    {% endif %}
+  </div>
+
+  {% if LINKS %}
+    <div class="flex justify-center gap-6 mt-6">
+      {% for name, link in LINKS %}
+        <a href="{{ SITEURL }}/{{ link }}" class="c-accent text-sm font-medium no-underline hover:underline">{{ name }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if SOCIAL %}
+    <div class="social-icons flex justify-center gap-4 text-2xl mt-6">
+      {% for name, link in SOCIAL %}
+        <a href="{{ link }}" target="_blank" rel="noopener noreferrer{% if 'mastodon' in name %} me{% endif %}" aria-label="{{ name | title }}" class="hover:opacity-70 transition-opacity">
+          <i class="fa-brands fa-{{ name }}" aria-hidden="true"></i>
+        </a>
+      {% endfor %}
+      {% if EMAIL %}
+        <a href="mailto:{{ EMAIL }}" aria-label="Email" class="hover:opacity-70 transition-opacity">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+{% endblock body_content %}
+
+{% block footer %}{% endblock footer %}

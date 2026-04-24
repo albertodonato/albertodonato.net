@@ -9,12 +9,12 @@
 
       <meta property="og:site_name" content="{{ SITENAME }}">
       <meta property="og:type" content="website">
-      <meta property="og:url" content="{{ SITEURL }}/{{ output_file }}">
+      <meta property="og:url" content="{{ SITEURL }}/{{ output_file | replace('index.html', '') | replace('.html', '') }}">
       <meta property="og:title" content="{{ self.title() }}">
       <meta property="og:description" content="{{ description }}">
       <meta property="og:locale" content="{{ DEFAULT_LANG }}">
 
-      <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}">
+      <link rel="canonical" href="{{ SITEURL }}/{{ output_file | replace('index.html', '') | replace('.html', '') }}">
       {% if FAVICON_URL %}
         <link rel="icon" href="{{ FAVICON_URL }}">
       {% endif %}
@@ -29,20 +29,20 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <div class="flex flex-col lg:flex-row flex-1">
-      {% include 'include/header.html' %}
-
-      <main class="flex-1 min-w-0">
+    {% block body_content %}
+    <div class="flex-1">
+      <main>
         {% include 'include/section_nav.html' %}
 
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-8 lg:py-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-8 lg:py-10">
           {% block content_hint %}{% endblock %}
           {% block content %}{% endblock %}
         </div>
       </main>
     </div>
+    {% endblock %}
 
-    {% include 'include/footer.html' %}
+    {% block footer %}{% include 'include/footer.html' %}{% endblock %}
     {% include 'include/js_body.html' %}
   </body>
 </html>

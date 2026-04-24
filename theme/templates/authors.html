@@ -6,9 +6,8 @@
 {%- endblock %}
 
 {% block content %}
-  <header class="b-theme mb-8 pb-6 border-b">
-    <h2 class="c-text text-2xl font-bold">Authors</h2>
-  </header>
+  {% set header_title = 'Authors' %}
+  {% include 'include/page_header.html' %}
 
   <ul class="space-y-2">
     {% for author, articles in authors | sort %}

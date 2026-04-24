@@ -1,22 +1,36 @@
 {# -*- mode: jinja2 -*- #}
-<nav class="section-nav sticky top-0 z-10 border-b px-4 sm:px-6 lg:px-8 xl:px-10" aria-label="Section navigation">
-  <div class="max-w-3xl mx-auto flex items-center gap-1">
+<nav class="section-nav sticky top-0 z-10 px-4 sm:px-6 lg:px-8 xl:px-10" aria-label="Section navigation">
+  <div class="max-w-5xl mx-auto flex items-center gap-1">
+    <a href="{{ SITEURL }}/{{ INDEX_URL }}" class="section-nav-link" aria-label="Home">
+      <i class="fa-solid fa-house text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">Home</span>
+    </a>
     {% if ARCHIVES_URL %}
-      <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}" class="section-nav-link">
-        <i class="fa-solid fa-box-archive fa-xs" aria-hidden="true"></i>Archives
+      <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}" class="section-nav-link" aria-label="Archives">
+        <i class="fa-solid fa-box-archive text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">Archives</span>
+      </a>
+    {% endif %}
+    {% if CATEGORIES_URL %}
+      <a href="{{ SITEURL }}/{{ CATEGORIES_URL }}" class="section-nav-link" aria-label="Categories">
+        <i class="fa-solid fa-folder text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">Categories</span>
       </a>
     {% endif %}
     {% if TAGS_URL %}
-      <a href="{{ SITEURL }}/{{ TAGS_URL }}" class="section-nav-link">
-        <i class="fa-solid fa-tags fa-xs" aria-hidden="true"></i>Tags
+      <a href="{{ SITEURL }}/{{ TAGS_URL }}" class="section-nav-link" aria-label="Tags">
+        <i class="fa-solid fa-tags text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">Tags</span>
       </a>
     {% endif %}
     {% if FEED_ALL_ATOM or FEED_ALL_RSS %}
-      <a href="{{ SITEURL }}/{% if FEED_ALL_ATOM %}{{ FEED_ALL_ATOM }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" class="section-nav-link">
-        <i class="fa-solid fa-rss fa-xs" aria-hidden="true"></i>RSS
+      <a href="{{ SITEURL }}/{% if FEED_ALL_ATOM %}{{ FEED_ALL_ATOM }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" class="section-nav-link" aria-label="RSS">
+        <i class="fa-solid fa-rss text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">RSS</span>
       </a>
     {% endif %}
-    <div class="ml-auto py-2">
+    {% if SEARCH_ENABLED %}
+      <div class="stork-wrapper">
+        <input data-stork="sitesearch" class="stork-input" placeholder="Search…" />
+        <div data-stork="sitesearch-output" class="stork-output"></div>
+      </div>
+    {% endif %}
+    <div class="ml-auto">
       <div class="theme-picker flex" id="theme-picker" role="group" aria-label="Color theme">
         <button class="theme-option" data-theme-value="auto" aria-label="Theme: system default">
           <i class="fa-solid fa-circle-half-stroke fa-sm" aria-hidden="true"></i>

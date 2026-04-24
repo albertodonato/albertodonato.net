@@ -7,30 +7,12 @@
   <meta name="description" content="{{ META_DESCRIPTION | default(SITENAME) | striptags }}">
 {% endblock %}
 
-{% block content_hint %}
-  <header class="b-theme mb-8 pb-6 border-b">
-    <h2 class="c-text text-2xl font-bold">Recent Posts</h2>
-  </header>
-{% endblock %}
-
 {% block content %}
   <div class="space-y-10">
     {% for article in articles_page.object_list %}
-      {% if not loop.first %}
-        <hr class="b-theme" />
-      {% endif %}
       <article>
         <header class="mb-3">
-          <div class="c-muted flex flex-wrap items-center gap-x-6 gap-y-1.5 mb-2 text-sm">
-            <a href="{{ SITEURL }}/{{ article.category.url }}" class="c-accent inline-flex items-center gap-1 font-medium no-underline hover:underline">
-              <i class="fa-solid fa-folder-open fa-xs" aria-hidden="true"></i>
-              {{ article.category }}
-            </a>
-            <span class="flex items-center gap-1">
-              <i class="fa-regular fa-calendar fa-xs" aria-hidden="true"></i>
-              <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
-            </span>
-          </div>
+          {% include 'include/article_meta.html' %}
           <h3 class="text-2xl font-semibold leading-snug">
             <a href="{{ SITEURL }}/{{ article.url }}" class="c-text no-underline hover:underline" title="Permalink to {{ article.title | striptags }}">
               {{ article.title }}
@@ -45,13 +27,7 @@
             Read more <i class="fa-solid fa-arrow-right fa-xs" aria-hidden="true"></i>
           </a>
           {% if article.tags %}
-            <div class="flex flex-wrap gap-1.5">
-              {% for tag in article.tags | sort %}
-                <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip">
-                  <i class="fa-solid fa-tag fa-xs" aria-hidden="true"></i>{{ tag }}
-                </a>
-              {% endfor %}
-            </div>
+            {% include 'include/tag_list.html' %}
           {% endif %}
         </footer>
       </article>

@@ -1,6 +1,6 @@
 {# -*- mode: jinja2 -*- #}
 {% if DEFAULT_PAGINATION %}
-  <nav class="b-theme mt-12 pt-6 border-t flex items-center justify-between" aria-label="Post navigation">
+  <nav class="mt-12 flex items-center justify-between" aria-label="Post navigation">
     {% if articles_page.has_previous() %}
       <a href="{{ SITEURL }}/{{ articles_previous_page.url }}" class="c-accent inline-flex items-center gap-1 text-sm font-medium no-underline hover:underline">
         <i class="fa-solid fa-arrow-left fa-xs" aria-hidden="true"></i> Newer

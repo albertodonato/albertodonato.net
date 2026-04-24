@@ -1,8 +1,10 @@
-=====
-About
-=====
+=========
+Portfolio
+=========
 
-:index: 0
+:hidden: true
+:template: portfolio
+:save_as: index.html
 
 I'm a Software Engineer from Italy.
 
