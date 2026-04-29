@@ -1,9 +1,9 @@
 {# -*- mode: jinja2 -*- #}
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/assets/fonts/fonts.css" />
+<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/assets/fontawesome/css/all.min.css" />
 <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/style.css" />
+<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/assets/pygments-light.css" />
+<link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/assets/pygments-dark.css" />
 {% if SEARCH_ENABLED %}
   <link rel="stylesheet" href="https://files.stork-search.net/releases/v1.6.0/stork.css" />
 {% endif %}

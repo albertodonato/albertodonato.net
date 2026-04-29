@@ -18,12 +18,12 @@
 
 {% block content %}
   <article class="{{ article.status }}">
-    <header class="mb-6">
+    <header class="article-header">
       {% set show_author = true %}
       {% include 'include/article_meta.html' %}
-      <h1 class="c-text text-4xl font-bold leading-tight">{{ article.title }}</h1>
+      <h1 class="c-text article-title">{{ article.title }}</h1>
       {% if article.tags %}
-        <div class="mt-4">{% include 'include/tag_list.html' %}</div>
+        <div class="article-tags">{% include 'include/tag_list.html' %}</div>
       {% endif %}
     </header>
     <div class="prose c-text">

@@ -9,11 +9,11 @@
   {% set header_title = 'Authors' %}
   {% include 'include/page_header.html' %}
 
-  <ul class="space-y-2">
+  <ul class="item-list">
     {% for author, articles in authors | sort %}
-      <li class="flex items-center gap-3">
-        <a href="{{ SITEURL }}/{{ author.url }}" class="c-accent no-underline hover:underline font-medium">{{ author }}</a>
-        <span class="c-muted text-sm">({{ articles | count }})</span>
+      <li>
+        <a href="{{ SITEURL }}/{{ author.url }}" class="c-accent">{{ author }}</a>
+        <span class="c-muted item-count">({{ articles | count }})</span>
       </li>
     {% endfor %}
   </ul>

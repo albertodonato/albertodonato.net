@@ -1,3 +1,7 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [ "setuptools" ]
+
 [project]
 name = "albertodonato"
 version = "0.0.1"
@@ -13,13 +17,15 @@ dependencies = [
   "pelican-sitemap",
   "pygments",
 ]
+scripts.download-assets = "theme_scripts.download_assets:main"
+scripts.render-css = "theme_scripts.render_css:main"
 
 [dependency-groups]
-lint = [
-  "pre-commit",
-  "pyproject-fmt",
-  "ruff",
-]
+lint = [ "pre-commit", "pyproject-fmt", "ruff", "ty" ]
+
+[tool.setuptools]
+packages = [ "theme_scripts" ]
+package-data.theme_scripts = [ "py.typed" ]
 
 [tool.ruff]
 line-length = 79
@@ -30,9 +36,20 @@ lint.isort.force-sort-within-sections = true
 [tool.pyproject-fmt]
 expand_tables = [ "tool.tox" ]
 
+[tool.ty]
+rules.unresolved-import = "ignore"
+
 [tool.tox]
 requires = [ "tox>=4.6", "tox-uv>=1.0" ]
 no_package = true
+
+[tool.tox.env.check]
+dependency_groups = [ "lint" ]
+commands = [ [ "ty", "check", { replace = "posargs", default = [], extend = true } ] ]
+
+[tool.tox.env.download-assets]
+package = "wheel"
+commands = [ [ "download-assets", "theme/static/assets" ] ]
 
 [tool.tox.env.generate]
 commands = [ [ "pelican", "content/", { replace = "posargs", default = [], extend = true } ] ]
@@ -52,6 +69,10 @@ commands = [
     { replace = "posargs", default = [], extend = true }
   ]
 ]
+
+[tool.tox.env.render-css]
+package = "wheel"
+commands = [ [ "render-css", "theme/static/assets/pygments-light.css", "theme/static/assets/pygments-dark.css" ] ]
 
 [tool.tox.env.serve]
 commands = [

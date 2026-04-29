@@ -1,15 +1,15 @@
 {# -*- mode: jinja2 -*- #}
-<footer class="py-8 px-4 sm:px-6">
-  <div class="c-muted flex flex-col items-center gap-3 text-sm">
+<footer>
+  <div class="footer-inner c-muted">
     {% if SOCIAL %}
-      <div class="social-icons flex justify-center gap-8 text-2xl mb-4">
+      <div class="social-icons">
         {% for name, link in SOCIAL %}
-          <a href="{{ link }}" target="_blank" rel="noopener noreferrer{% if 'mastodon' in name %} me{% endif %}" aria-label="{{ name | title }}" class="hover:opacity-70 transition-opacity">
+          <a href="{{ link }}" target="_blank" rel="noopener noreferrer{% if 'mastodon' in name %} me{% endif %}" aria-label="{{ name | title }}">
             <i class="fa-brands fa-{{ name }}" aria-hidden="true"></i>
           </a>
         {% endfor %}
         {% if EMAIL %}
-          <a href="mailto:{{ EMAIL }}" aria-label="Email" class="hover:opacity-70 transition-opacity">
+          <a href="mailto:{{ EMAIL }}" aria-label="Email">
             <i class="fa-solid fa-envelope" aria-hidden="true"></i>
           </a>
         {% endif %}

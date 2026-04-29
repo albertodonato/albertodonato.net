@@ -1,20 +1,20 @@
 {# -*- mode: jinja2 -*- #}
 {% if DEFAULT_PAGINATION %}
-  <nav class="mt-12 flex items-center justify-between" aria-label="Post navigation">
+  <nav class="pagination" aria-label="Post navigation">
     {% if articles_page.has_previous() %}
-      <a href="{{ SITEURL }}/{{ articles_previous_page.url }}" class="c-accent inline-flex items-center gap-1 text-sm font-medium no-underline hover:underline">
+      <a href="{{ SITEURL }}/{{ articles_previous_page.url }}" class="c-accent">
         <i class="fa-solid fa-arrow-left fa-xs" aria-hidden="true"></i> Newer
       </a>
     {% else %}
-      <span class="c-muted text-sm">&larr; Newer</span>
+      <span class="c-muted">&larr; Newer</span>
     {% endif %}
-    <span class="c-muted text-sm">Page {{ articles_page.number }} of {{ articles_page.paginator.num_pages }}</span>
+    <span class="c-muted">Page {{ articles_page.number }} of {{ articles_page.paginator.num_pages }}</span>
     {% if articles_page.has_next() %}
-      <a href="{{ SITEURL }}/{{ articles_next_page.url }}" class="c-accent inline-flex items-center gap-1 text-sm font-medium no-underline hover:underline">
+      <a href="{{ SITEURL }}/{{ articles_next_page.url }}" class="c-accent">
         Older <i class="fa-solid fa-arrow-right fa-xs" aria-hidden="true"></i>
       </a>
     {% else %}
-      <span class="c-muted text-sm">Older &rarr;</span>
+      <span class="c-muted">Older &rarr;</span>
     {% endif %}
   </nav>
 {% endif %}

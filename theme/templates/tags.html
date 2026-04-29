@@ -9,11 +9,11 @@
   {% set header_title = 'Tags' %}
   {% include 'include/page_header.html' %}
 
-  <div class="flex flex-col gap-2">
+  <div class="tag-index">
     {% for tag, articles in tags | sort %}
-      <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip text-base self-start">
+      <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-chip">
         <i class="fa-solid fa-tag fa-sm" aria-hidden="true"></i>{{ tag }}
-        <span class="ml-1 text-sm opacity-70">({{ articles | count }})</span>
+        <span class="tag-count">({{ articles | count }})</span>
       </a>
     {% endfor %}
   </div>

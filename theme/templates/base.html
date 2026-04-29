@@ -5,6 +5,7 @@
     {% block head %}
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script>(function(){var t=localStorage.getItem("theme");if(t&&t!=="auto")document.documentElement.setAttribute("data-theme",t);})();</script>
       <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 
       <meta property="og:site_name" content="{{ SITENAME }}">
@@ -28,13 +29,13 @@
     {% endblock %}
   </head>
 
-  <body class="flex flex-col min-h-screen">
+  <body>
     {% block body_content %}
-    <div class="flex-1">
+    <div class="page-body">
       <main>
         {% include 'include/section_nav.html' %}
 
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 py-8 lg:py-10">
+        <div class="content-container">
           {% block content_hint %}{% endblock %}
           {% block content %}{% endblock %}
         </div>

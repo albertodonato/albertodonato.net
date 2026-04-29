@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 AUTHOR = "Alberto Donato"
 SITENAME = "Alberto Donato"
-SITEURL = "http://localhost:8000"
+SITEURL: str = "http://localhost:8000"
 
 RELATIVE_URLS = True
 

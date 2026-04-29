@@ -8,22 +8,22 @@
 {% endblock %}
 
 {% block content %}
-  <div class="space-y-10">
+  <div class="article-list">
     {% for article in articles_page.object_list %}
       <article>
-        <header class="mb-3">
+        <header class="article-list-header">
           {% include 'include/article_meta.html' %}
-          <h3 class="text-2xl font-semibold leading-snug">
-            <a href="{{ SITEURL }}/{{ article.url }}" class="c-text no-underline hover:underline" title="Permalink to {{ article.title | striptags }}">
+          <h3 class="article-list-title">
+            <a href="{{ SITEURL }}/{{ article.url }}" class="c-text" title="Permalink to {{ article.title | striptags }}">
               {{ article.title }}
             </a>
           </h3>
         </header>
-        <div class="c-muted text-base leading-relaxed">
+        <div class="c-muted article-summary">
           {{ article.summary }}
         </div>
-        <footer class="mt-4 flex flex-wrap items-center gap-x-8 gap-y-2">
-          <a href="{{ SITEURL }}/{{ article.url }}" class="c-accent inline-flex items-center gap-1.5 text-sm font-medium no-underline hover:underline">
+        <footer class="article-footer">
+          <a href="{{ SITEURL }}/{{ article.url }}" class="c-accent read-more">
             Read more <i class="fa-solid fa-arrow-right fa-xs" aria-hidden="true"></i>
           </a>
           {% if article.tags %}

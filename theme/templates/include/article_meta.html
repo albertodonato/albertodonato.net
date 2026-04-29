@@ -1,17 +1,17 @@
 {# -*- mode: jinja2 -*- #}
 {# expects: article, show_author (optional, default false) #}
-<div class="c-muted flex flex-wrap items-center gap-x-6 gap-y-1.5 mb-3 text-sm">
-  <a href="{{ SITEURL }}/{{ article.category.url }}" class="c-accent inline-flex items-center gap-1 font-medium no-underline hover:underline">
+<div class="article-meta c-muted">
+  <a href="{{ SITEURL }}/{{ article.category.url }}" class="c-accent">
     <i class="fa-solid fa-folder-open fa-xs" aria-hidden="true"></i>
     {{ article.category }}
   </a>
-  <span class="flex items-center gap-1">
+  <span class="meta-item">
     <i class="fa-regular fa-calendar fa-xs" aria-hidden="true"></i>
     <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
   </span>
   {% if show_author | default(false) and article.author and SHOW_ARTICLE_AUTHOR %}
-    <span class="flex items-center gap-1">
-      By <a href="{{ SITEURL }}/{{ article.author.url }}" class="c-accent no-underline hover:underline ml-1">{{ article.author }}</a>
+    <span class="meta-item">
+      By <a href="{{ SITEURL }}/{{ article.author.url }}" class="c-accent">{{ article.author }}</a>
     </span>
   {% endif %}
 </div>

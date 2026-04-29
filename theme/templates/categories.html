@@ -9,13 +9,13 @@
   {% set header_title = 'Categories' %}
   {% include 'include/page_header.html' %}
 
-  <ul class="space-y-2">
+  <ul class="item-list">
     {% for category, articles in categories | sort %}
-      <li class="flex items-center gap-3">
-        <a href="{{ SITEURL }}/{{ category.url }}" class="c-accent no-underline hover:underline font-medium">
-          <i class="fa-solid fa-folder-open fa-xs mr-1" aria-hidden="true"></i>{{ category }}
+      <li>
+        <a href="{{ SITEURL }}/{{ category.url }}" class="c-accent">
+          <i class="fa-solid fa-folder-open fa-xs" aria-hidden="true"></i>{{ category }}
         </a>
-        <span class="c-muted text-sm">({{ articles | count }})</span>
+        <span class="c-muted item-count">({{ articles | count }})</span>
       </li>
     {% endfor %}
   </ul>

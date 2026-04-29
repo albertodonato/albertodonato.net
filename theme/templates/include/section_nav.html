@@ -1,27 +1,27 @@
 {# -*- mode: jinja2 -*- #}
-<nav class="section-nav sticky top-0 z-10 px-4 sm:px-6 lg:px-8 xl:px-10" aria-label="Section navigation">
-  <div class="max-w-5xl mx-auto flex items-center gap-1">
+<nav class="section-nav" aria-label="Section navigation">
+  <div class="nav-inner">
     <a href="{{ SITEURL }}/{{ INDEX_URL }}" class="section-nav-link" aria-label="Home">
-      <i class="fa-solid fa-house text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">Home</span>
+      <i class="fa-solid fa-house nav-icon" aria-hidden="true"></i><span class="nav-label">Home</span>
     </a>
     {% if ARCHIVES_URL %}
       <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}" class="section-nav-link" aria-label="Archives">
-        <i class="fa-solid fa-box-archive text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">Archives</span>
+        <i class="fa-solid fa-box-archive nav-icon" aria-hidden="true"></i><span class="nav-label">Archives</span>
       </a>
     {% endif %}
     {% if CATEGORIES_URL %}
       <a href="{{ SITEURL }}/{{ CATEGORIES_URL }}" class="section-nav-link" aria-label="Categories">
-        <i class="fa-solid fa-folder text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">Categories</span>
+        <i class="fa-solid fa-folder nav-icon" aria-hidden="true"></i><span class="nav-label">Categories</span>
       </a>
     {% endif %}
     {% if TAGS_URL %}
       <a href="{{ SITEURL }}/{{ TAGS_URL }}" class="section-nav-link" aria-label="Tags">
-        <i class="fa-solid fa-tags text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">Tags</span>
+        <i class="fa-solid fa-tags nav-icon" aria-hidden="true"></i><span class="nav-label">Tags</span>
       </a>
     {% endif %}
     {% if FEED_ALL_ATOM or FEED_ALL_RSS %}
       <a href="{{ SITEURL }}/{% if FEED_ALL_ATOM %}{{ FEED_ALL_ATOM }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" class="section-nav-link" aria-label="RSS">
-        <i class="fa-solid fa-rss text-lg sm:text-xs" aria-hidden="true"></i><span class="hidden sm:inline">RSS</span>
+        <i class="fa-solid fa-rss nav-icon" aria-hidden="true"></i><span class="nav-label">RSS</span>
       </a>
     {% endif %}
     {% if SEARCH_ENABLED %}
@@ -30,8 +30,8 @@
         <div data-stork="sitesearch-output" class="stork-output"></div>
       </div>
     {% endif %}
-    <div class="ml-auto">
-      <div class="theme-picker flex" id="theme-picker" role="group" aria-label="Color theme">
+    <div class="nav-end">
+      <div class="theme-picker" id="theme-picker" role="group" aria-label="Color theme">
         <button class="theme-option" data-theme-value="auto" aria-label="Theme: system default">
           <i class="fa-solid fa-circle-half-stroke fa-sm" aria-hidden="true"></i>
         </button>

@@ -1,4 +1,5 @@
 output
 .tox
+*.egg-info
 __pycache__
-/theme/node_modules
+/build
