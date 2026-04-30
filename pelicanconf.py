@@ -1,9 +1,4 @@
-import logging
 from pathlib import Path
-from shutil import which
-
-logger = logging.getLogger(__name__)
-
 
 AUTHOR = "Alberto Donato"
 SITENAME = "Alberto Donato"
@@ -68,12 +63,8 @@ EXTRA_PATH_METADATA = {str(path): {"path": path.name} for path in extra_paths}
 
 THEME = "./theme"
 
-PLUGINS = ["sitemap"]
-SEARCH_ENABLED = bool(which("stork"))
-if SEARCH_ENABLED:
-    PLUGINS.append("search")
-else:
-    logger.warning("stork executable not found, not enabling search")
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["pagefind_search", "sitemap"]
 
 #
 # plugin: sitemap
@@ -87,11 +78,6 @@ SITEMAP = {
         "pages": "monthly",
     },
 }
-
-#
-# plugin: pelican-search
-#
-STORK_INPUT_OPTIONS = {"url_prefix": SITEURL}
 
 #
 # theme-specific settings

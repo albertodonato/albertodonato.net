@@ -12,8 +12,8 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
+  "pagefind[extended]",
   "pelican",
-  "pelican-search",
   "pelican-sitemap",
   "pygments",
 ]

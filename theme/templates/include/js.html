@@ -1,5 +1,2 @@
 {# -*- mode: jinja2 -*- #}
-{% if SEARCH_ENABLED %}
-  <script src="https://files.stork-search.net/releases/v1.6.0/stork.js" defer></script>
-  <script>document.addEventListener("DOMContentLoaded", () => stork.register("sitesearch", "{{ SITEURL }}/search-index.st"));</script>
-{% endif %}
+<script src="{{ SITEURL }}/pagefind/pagefind-component-ui.js" type="module"></script>
