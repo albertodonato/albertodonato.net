@@ -319,7 +319,6 @@ footer {
 .portfolio-bio {
   font-size: 1.125rem;
   line-height: 1.75;
-  margin-top: 1rem;
   max-width: 65ch;
 }
 
@@ -333,7 +332,7 @@ footer {
 }
 
 .portfolio .social-icons {
-  gap: 1rem;
+  gap: 1.5rem;
   margin-top: 1.5rem;
 }
 
@@ -687,4 +686,24 @@ footer {
   }
 
   i { margin-right: 0.5rem; }
+}
+
+/* ─── Pagefind ──────────────────────────────────────────────────────────────── */
+
+:root {
+  --pf-text: var(--text);
+  --pf-text-secondary: var(--text-muted);
+  --pf-text-muted: var(--text-muted);
+  --pf-background: var(--bg);
+  --pf-border: var(--border);
+  --pf-border-focus: var(--accent);
+  --pf-hover: var(--bg-secondary);
+  --pf-mark: var(--accent);
+  --pf-outline-focus: var(--accent);
+  --pf-font: Roboto, system-ui, sans-serif;
+  --pf-input-font-size: 18px;
+  --pf-summary-font-size: 14px;
+  --pf-result-title-font-size: 16px;
+  --pf-result-excerpt-font-size: 14px;
+  --pf-border-radius: 4px;
 }

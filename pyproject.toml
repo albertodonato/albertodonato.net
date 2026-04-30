@@ -18,7 +18,7 @@ dependencies = [
   "pygments",
 ]
 scripts.download-assets = "theme_scripts.download_assets:main"
-scripts.render-css = "theme_scripts.render_css:main"
+scripts.render-pygments = "theme_scripts.render_pygments:main"
 
 [dependency-groups]
 lint = [ "pre-commit", "pyproject-fmt", "ruff", "ty" ]
@@ -40,7 +40,6 @@ expand_tables = [ "tool.tox" ]
 rules.unresolved-import = "ignore"
 
 [tool.tox]
-requires = [ "tox>=4.6", "tox-uv>=1.0" ]
 no_package = true
 
 [tool.tox.env.check]
@@ -70,9 +69,9 @@ commands = [
   ]
 ]
 
-[tool.tox.env.render-css]
+[tool.tox.env.render-pygments]
 package = "wheel"
-commands = [ [ "render-css", "theme/static/assets/pygments-light.css", "theme/static/assets/pygments-dark.css" ] ]
+commands = [ [ "render-pygments", "theme/static/assets/pygments-light.css", "theme/static/assets/pygments-dark.css" ] ]
 
 [tool.tox.env.serve]
 commands = [

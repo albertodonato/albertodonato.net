@@ -38,8 +38,8 @@ DAY_ARCHIVE_SAVE_AS = "blog/archives/{date:%Y}/{date:%m}/{date:%d}/index.html"
 
 # Links section
 LINKS = (
-    ("Blog", "blog"),
-    ("Projects", "blog/projects"),
+    ("blog", "blog"),
+    ("projects", "blog/projects"),
 )
 
 # Social links
