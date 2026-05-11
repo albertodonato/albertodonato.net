@@ -13,9 +13,9 @@ activity.
 All of them are available on my `GitHub profile`_, below are the main ones.
 
 
----------------
-query-exporter_
----------------
+----------------
+query-exporter__
+----------------
 
 Prometheus exporter that allows ingesting results from SQL query as
 metrics.
@@ -26,9 +26,9 @@ scheduled and parametric queries.
 Built on top of ``prometheus-aioexporter``.
 
 
------------------------
-prometheus-aioexporter_
------------------------
+------------------------
+prometheus-aioexporter__
+------------------------
 
 Simple and opinionated ``asyncio``-based Python library to build Prometheus
 exporters.
@@ -37,6 +37,6 @@ It provides a boilerplate-free way base class for the exporter script, metrics
 declaration and http/https handling, just add the logic for updating metrics.
 
 
-.. _query-exporter: https://github.com/albertodonato/query-exporter
-.. _prometheus-aioexporter: https://github.com/albertodonato/prometheus-aioexporter
+.. __: https://github.com/albertodonato/query-exporter
+.. __: https://github.com/albertodonato/prometheus-aioexporter
 .. _`GitHub profile`: https://github.com/albertodonato

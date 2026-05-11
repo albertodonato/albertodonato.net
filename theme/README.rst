@@ -4,9 +4,9 @@ Theme-specific settings
 
 This theme provides the following additional settings:
 
-=======================  ====================================================
+=======================  =====================================================
 Name                     Value
-=======================  ====================================================
+=======================  =====================================================
 ``AVATAR_URL``           URL to the avatar image for the portfolio.
 ``LICENSE_NAME``         License to display in the page footer (e.g.
                          ``LICENSE_NAME = 'CC BY-SA 4.0'``)
