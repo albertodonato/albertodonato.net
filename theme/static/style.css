@@ -765,3 +765,8 @@ footer {
   --pf-result-excerpt-font-size: 0.875rem;
   --pf-border-radius: 4px;
 }
+
+.pf-searchbox-result:active,
+.pf-heading-chip:active {
+  background: var(--bg-secondary);
+}
