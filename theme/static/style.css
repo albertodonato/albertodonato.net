@@ -16,18 +16,31 @@ h1, h2, h3, h4, h5, h6 {
 /* ─── Design tokens ────────────────────────────────────────────────────────── */
 
 :root {
-  --bg: #fff;
-  --bg-secondary: #f6f8fa;
-  --text: #1c1c1e;
-  --text-muted: #6e6e73;
-  --accent: #0969da;
-  --accent-hover: #0550ae;
-  --border: #d1d1d6;
-  --transition: 150ms ease;
+    --font-family: Roboto, sans-serif;
+    --font-family-mono: 'Roboto Mono', monospace;
+    --bg: #fff;
+    --bg-secondary: #f6f8fa;
+    --text: #1c1c1e;
+    --text-muted: #6e6e73;
+    --accent: #0969da;
+    --accent-hover: #0550ae;
+    --border: #d1d1d6;
+    --transition: 150ms ease;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+    :root:not([data-theme="light"]) {
+        --bg: #0d1117;
+        --bg-secondary: #161b22;
+        --text: #e6edf3;
+        --text-muted: #8b949e;
+        --accent: #58a6ff;
+        --accent-hover: #79b8ff;
+        --border: #30363d;
+    }
+}
+
+[data-theme="dark"] {
     --bg: #0d1117;
     --bg-secondary: #161b22;
     --text: #e6edf3;
@@ -35,17 +48,6 @@ h1, h2, h3, h4, h5, h6 {
     --accent: #58a6ff;
     --accent-hover: #79b8ff;
     --border: #30363d;
-  }
-}
-
-[data-theme="dark"] {
-  --bg: #0d1117;
-  --bg-secondary: #161b22;
-  --text: #e6edf3;
-  --text-muted: #8b949e;
-  --accent: #58a6ff;
-  --accent-hover: #79b8ff;
-  --border: #30363d;
 }
 
 /* ─── Base ──────────────────────────────────────────────────────────────────── */
@@ -54,7 +56,7 @@ html {
   background-color: var(--bg);
   color: var(--text);
   font-size: 18px;
-  font-family: Roboto, system-ui, sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   transition:
@@ -404,20 +406,20 @@ footer {
   li { margin-bottom: 0.25rem; }
 
   code {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.875em;
-    background-color: var(--bg-secondary);
-    padding: 0.15em 0.35em;
-    border-radius: 4px;
+      font-family: var(--font-family-mono);
+      font-size: 0.875em;
+      background-color: var(--bg-secondary);
+      padding: 0.15em 0.35em;
+      border-radius: 4px;
   }
-
+  
   pre {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 1rem 1.25rem;
     overflow-x: auto;
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--font-family-mono);
     font-size: 0.875rem;
     line-height: 1.6;
 
@@ -752,12 +754,14 @@ footer {
   --pf-border: var(--border);
   --pf-border-focus: var(--accent);
   --pf-hover: var(--bg-secondary);
+  --pf-skeleton: var(--bg-secondary);
+  --pf-skeleton-shine: var(--border);
   --pf-mark: var(--accent);
   --pf-outline-focus: var(--accent);
-  --pf-font: Roboto, system-ui, sans-serif;
-  --pf-input-font-size: 18px;
-  --pf-summary-font-size: 14px;
-  --pf-result-title-font-size: 16px;
-  --pf-result-excerpt-font-size: 14px;
+  --pf-font: var(--font-family);
+  --pf-input-font-size: 1rem;
+  --pf-summary-font-size: 0.875rem;
+  --pf-result-title-font-size: 0.9rem;
+  --pf-result-excerpt-font-size: 0.875rem;
   --pf-border-radius: 4px;
 }

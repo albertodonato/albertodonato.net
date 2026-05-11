@@ -9,16 +9,6 @@
         <i class="fa-solid fa-box-archive nav-icon" aria-hidden="true"></i><span class="nav-label">Archives</span>
       </a>
     {% endif %}
-    {% if CATEGORIES_URL %}
-      <a href="{{ SITEURL }}/{{ CATEGORIES_URL }}" class="section-nav-link" aria-label="Categories">
-        <i class="fa-solid fa-folder nav-icon" aria-hidden="true"></i><span class="nav-label">Categories</span>
-      </a>
-    {% endif %}
-    {% if TAGS_URL %}
-      <a href="{{ SITEURL }}/{{ TAGS_URL }}" class="section-nav-link" aria-label="Tags">
-        <i class="fa-solid fa-tags nav-icon" aria-hidden="true"></i><span class="nav-label">Tags</span>
-      </a>
-    {% endif %}
     {% if FEED_ALL_ATOM or FEED_ALL_RSS %}
       <a href="{{ SITEURL }}/{% if FEED_ALL_ATOM %}{{ FEED_ALL_ATOM }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" class="section-nav-link" aria-label="RSS">
         <i class="fa-solid fa-rss nav-icon" aria-hidden="true"></i><span class="nav-label">RSS</span>
