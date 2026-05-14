@@ -1,6 +1,6 @@
-=================
-Personal projects
-=================
+====================
+Open source projects
+====================
 
 :slug: projects
 :nav_title: Projects
