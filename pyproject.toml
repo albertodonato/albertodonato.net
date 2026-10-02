@@ -10,6 +10,7 @@ classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
 ]
 dependencies = [
   "pagefind[extended]",
@@ -60,13 +61,7 @@ commands = [ [ "pre-commit", "run", "--all-files" ] ]
 
 [tool.tox.env.publish]
 commands = [
-  [
-    "pelican",
-    "content/",
-    "--settings",
-    "publishconf.py",
-    { replace = "posargs", default = [], extend = true }
-  ]
+  [ "pelican", "content/", "--settings", "publishconf.py", { replace = "posargs", default = [], extend = true } ]
 ]
 
 [tool.tox.env.render-pygments]
