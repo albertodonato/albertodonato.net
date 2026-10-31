@@ -1,6 +1,6 @@
 import argparse
-import re
 from pathlib import Path
+import re
 
 from pygments.formatters import HtmlFormatter
 
