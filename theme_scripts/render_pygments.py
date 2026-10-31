@@ -1,5 +1,6 @@
 import argparse
 import re
+from pathlib import Path
 
 from pygments.formatters import HtmlFormatter
 
@@ -23,16 +24,12 @@ def pygments_css(style: str, selectors: list[str]) -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "light", type=argparse.FileType("w"), help="Light theme CSS output"
-    )
-    parser.add_argument(
-        "dark", type=argparse.FileType("w"), help="Dark theme CSS output"
-    )
+    parser.add_argument("light", type=Path, help="Light theme CSS output")
+    parser.add_argument("dark", type=Path, help="Dark theme CSS output")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    args.light.write(pygments_css(LIGHT_THEME, LIGHT_SELECTORS))
-    args.dark.write(pygments_css(DARK_THEME, DARK_SELECTORS))
+    args.light.write_text(pygments_css(LIGHT_THEME, LIGHT_SELECTORS))
+    args.dark.write_text(pygments_css(DARK_THEME, DARK_SELECTORS))
