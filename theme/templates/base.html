@@ -25,7 +25,9 @@
       {% include 'include/rss.html' %}
       {% include 'include/css.html' %}
       {% include 'include/js.html' %}
-      {% include 'include/simple_analytics.html' %}
+      {% if SIMPLE_ANALYTICS %}
+        <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+      {% endif %}
     {% endblock %}
   </head>
 

@@ -15,11 +15,14 @@
         {% endif %}
       </div>
     {% endif %}
-    <span>
+    <div class="copyright">
       &copy; {% if now is defined %}{{ now.year }} {% endif %}<a href="{{ SITEURL }}">{{ AUTHOR }}</a>
       {% if LICENSE_NAME %}
-        &mdash; <a href="{{ LICENSE_URL }}">{{ LICENSE_NAME }}</a> unless otherwise noted.
+        &mdash; <a href="{{ LICENSE_URL }}">{{ LICENSE_NAME }}</a>
       {% endif %}
-    </span>
+    </div>
+    {% if SIMPLE_ANALYTICS or True %}
+      <div class="simple-analytics">{% include 'include/simple_analytics_badge.html' %}</div>
+    {% endif %}
   </div>
 </footer>
