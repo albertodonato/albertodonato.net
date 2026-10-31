@@ -85,6 +85,8 @@ SITEMAP = {
 # theme-specific settings
 #
 
+SITE_DOMAIN = "albertodonato.net"
+
 LICENSE_NAME = "CC BY-SA 4.0"
 LICENSE_URL = "https://creativecommons.org/licenses/by-sa/4.0/"
 
